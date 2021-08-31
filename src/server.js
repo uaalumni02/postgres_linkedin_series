@@ -12,6 +12,8 @@ const port = process.env.PORT || 3000;
 
 import modelRoutes from "./routes/model.route";
 
+//Parses incoming requests with urlencoded payloads and is based on body-parser & CORS --cross origin resources 
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

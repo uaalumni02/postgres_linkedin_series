@@ -18,5 +18,16 @@ const responseBadRequest = (res, message) => {
     message,
   });
 };
+const responseOk = (res, data) => {
+  return res.status(200).json({
+    success: true,
+    data,
+  });
+};
 
-export { responseOkCreated, responseServerError, responseBadRequest };
+export {
+  responseOkCreated,
+  responseServerError,
+  responseBadRequest,
+  responseOk,
+};

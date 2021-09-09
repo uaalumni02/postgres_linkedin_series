@@ -5,4 +5,6 @@ const router = express.Router();
 
 router.route("/").post(modelController.addModelData);
 
+router.route("/").get(modelController.getAllModels);
+
 export default router;

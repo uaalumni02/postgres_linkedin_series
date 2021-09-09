@@ -9,5 +9,13 @@ class Query {
       throw error;
     }
   }
+  static async getModels() {
+    try {
+      const getAllModels = await db.select().from("model").orderBy("id");
+      return getAllModels;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 export default Query;

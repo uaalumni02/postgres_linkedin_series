@@ -17,5 +17,14 @@ class Query {
       throw error;
     }
   }
+  static async modelById(id) {
+    try {
+      const modelById = await db("model").where({ id }).select();
+      return modelById;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
+
 export default Query;

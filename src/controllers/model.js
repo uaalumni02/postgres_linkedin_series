@@ -22,7 +22,18 @@ class ModelData {
       const getAllModels = await Query.getModels(req);
       return Response.responseOk(res, getAllModels);
     } catch (error) {
-      console.log(error)
+      return Response.responseServerError(res);
+    }
+  }
+  static async getModelById(req, res) {
+    const { id } = req.params;
+    try {
+      const modelById = await Query.modelById(id);
+      if (modelById.length == 0) {
+        Response.responseNotFound(res, Errors.INVALID_MODEL);
+      }
+      Response.responseOk(res, modelById);
+    } catch (error) {
       return Response.responseServerError(res);
     }
   }

@@ -24,10 +24,18 @@ const responseOk = (res, data) => {
     data,
   });
 };
+const responseNotFound = (res, message, data = []) => {
+  return res.status(404).json({
+    success: false,
+    message,
+    data,
+  });
+};
 
 export {
   responseOkCreated,
   responseServerError,
   responseBadRequest,
   responseOk,
+  responseNotFound,
 };

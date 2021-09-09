@@ -7,4 +7,6 @@ router.route("/").post(modelController.addModelData);
 
 router.route("/").get(modelController.getAllModels);
 
+router.route("/:id").get(modelController.getModelById);
+
 export default router;

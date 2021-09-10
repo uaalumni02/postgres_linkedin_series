@@ -37,6 +37,18 @@ class ModelData {
       return Response.responseServerError(res);
     }
   }
+  //this is where I need to start back
+  static async deleteModel(req, res) {
+    const { id } = req.params;
+    try {
+      const modelToDelete = await Query.deleteModel(id);
+      return !modelToDelete
+        ? Response.responseNotFound(res, Errors.INVALID_MODEL)
+        : Response.responseOk(res, modelToDelete);
+    } catch (error) {
+      return Response.responseServerError(res);
+    }
+  }
 }
 
 export default ModelData;

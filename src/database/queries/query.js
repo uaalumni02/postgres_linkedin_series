@@ -25,6 +25,14 @@ class Query {
       throw error;
     }
   }
+  static async deleteModel(id) {
+    try {
+      const modelToDelete = await db("model").where({ id }).del();
+      return modelToDelete;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default Query;

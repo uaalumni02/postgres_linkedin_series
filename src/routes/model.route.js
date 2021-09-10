@@ -7,6 +7,10 @@ router.route("/").post(modelController.addModelData);
 
 router.route("/").get(modelController.getAllModels);
 
-router.route("/:id").get(modelController.getModelById);
+router
+  .route("/:id")
+  .get(modelController.getModelById)
+
+  .delete(modelController.deleteModel);
 
 export default router;

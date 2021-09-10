@@ -37,14 +37,27 @@ class ModelData {
       return Response.responseServerError(res);
     }
   }
-  //this is where I need to start back
   static async deleteModel(req, res) {
     const { id } = req.params;
     try {
       const modelToDelete = await Query.deleteModel(id);
-      return !modelToDelete
+      if (!modelToDelete) {
+        Response.responseNotFound(res, Errors.INVALID_MODEL);
+      } else {
+        Response.responseOk(res, modelToDelete);
+      }
+    } catch (error) {
+      return Response.responseServerError(res);
+    }
+  }
+  static async updateModel(req, res) {
+    const { id } = req.params;
+    const modelData = { ...req.body };
+    try {
+      const modelToUpdate = await Query.updateModel(id, modelData);
+      return modelToUpdate.length == 0
         ? Response.responseNotFound(res, Errors.INVALID_MODEL)
-        : Response.responseOk(res, modelToDelete);
+        : Response.responseOk(res, modelToUpdate);
     } catch (error) {
       return Response.responseServerError(res);
     }

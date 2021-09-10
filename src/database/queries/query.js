@@ -33,6 +33,17 @@ class Query {
       throw error;
     }
   }
+  static async updateModel(id, modelData) {
+    try {
+      const modelToUpdate = await db("model")
+        .where({ id })
+        .update(modelData)
+        .returning("*");
+      return modelToUpdate;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default Query;

@@ -9,16 +9,17 @@ const router = express.Router();
 
 const port = process.env.PORT || 3000;
 
-
 import modelRoutes from "./routes/model.route";
+import manufacturerRoutes from "./routes/manufacturer.route";
 
-//Parses incoming requests with urlencoded payloads and is based on body-parser & CORS --cross origin resources 
+//Parses incoming requests with urlencoded payloads and is based on body-parser & CORS --cross origin resources
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 router.use("/model", modelRoutes);
+router.use("/manufacturer", manufacturerRoutes);
 
 app.use("/api", router);
 

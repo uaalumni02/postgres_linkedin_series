@@ -44,6 +44,17 @@ class Query {
       throw error;
     }
   }
+  static async addManufacturer(data) {
+    try {
+      const manufacturerInfo = await db
+        .insert(data)
+        .returning("*")
+        .into("manufacturer");
+      return manufacturerInfo;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default Query;
